@@ -4,7 +4,7 @@ const { searchProducts } = require('../../src/catalog');
 const getIds = (objects) => objects.map(({ id }) => id);
 
 describe('searchProducts', () => {
-  describe('Существующий товар', () => {
+  describe('Точное совпадение', () => {
     test("'Наушники' возвращает товар с ID 1", () => {
       expect(getIds(searchProducts(products, 'Наушники'))).toContain(1);
     });
@@ -16,7 +16,9 @@ describe('searchProducts', () => {
     test("'Настольная лампа' возвращает товар с ID 4", () => {
       expect(getIds(searchProducts(products, 'Настольная лампа'))).toContain(4);
     });
+  });
 
+  describe('Регистронезависимый запрос', () => {
     test("'javascript' возвращает товар с ID 3", () => {
       expect(getIds(searchProducts(products, 'javascript'))).toContain(3);
     });
@@ -29,8 +31,8 @@ describe('searchProducts', () => {
       expect(getIds(searchProducts(products, 'наушники'))).toContain(1);
     });
   });
-  
-  describe('Несуществующий товар', () => {
+
+  describe('Пустой запрос', () => {
     test('пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]', () => {
       expect(getIds(searchProducts(products, ''))).toEqual([1, 2, 3, 4, 5, 6]);
     });
