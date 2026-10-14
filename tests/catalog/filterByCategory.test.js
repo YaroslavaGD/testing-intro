@@ -34,15 +34,15 @@ describe('filterByCategory', () => {
 
   describe('несуществующие категории', () => {
     test("'clothes' возвращает пустой массив", () => {
-      expect(getIds(filterByCategory(products, 'clothes'))).toEqual([]);
+      expect(filterByCategory(products, 'clothes')).toEqual([]);
     });
 
     test("'toys' возвращает пустой массив", () => {
-      expect(getIds(filterByCategory(products, 'toys'))).toEqual([]);
+      expect(filterByCategory(products, 'toys')).toEqual([]);
     });
 
     test("'sports' возвращает пустой массив", () => {
-      expect(getIds(filterByCategory(products, 'sports'))).toEqual([]);
+      expect(filterByCategory(products, 'sports')).toEqual([]);
     });
   });
 });
